@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 /**
  *
- * @author BestDark Fuck Nat
+ * @author BestDark Fuck Nat nana
  */
 public class Query {
     Database d;

@@ -94,4 +94,16 @@ public class Query {
         }
         return usersList;
     }
+    
+    public void addStock(String i, String p, String u, String n, String c, String m) {
+        if(i.length() > 13) {
+            JOptionPane.showMessageDialog(null,"Invalid Product ID");
+        } else {
+            String query = "insert into product (productID,productPrice,productUnit,productName,productColor"
+                    + ",productType) " + "values('" + i + "','" + p + "','" + u + "','" + n + "','" + c + "','" + m + "')";
+            d.connect();
+            d.execute(query);
+            d.disconnect();
+    	}
+    }
 }

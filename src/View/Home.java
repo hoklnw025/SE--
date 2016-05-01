@@ -7,12 +7,13 @@ package View;
 
 import Controller.Controller;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
  * @author USER
  */
-public class Home extends javax.swing.JPanel {
+public class Home extends JPanel {
 
     Controller controller;
     JFrame frame;

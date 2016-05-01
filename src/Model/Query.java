@@ -13,7 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class Query {
     Database d;
-
+    
+    //for add Customer page
     public void InsertCustomer(boolean sex, String s, String p, String fn, String ls, String add){
         try {
             int gender = sex?0:1;
@@ -46,4 +47,5 @@ public class Query {
     		JOptionPane.showMessageDialog(null,"Phone Number must be 10 character.");
     	}
     }
+    // end of add customer page
 }

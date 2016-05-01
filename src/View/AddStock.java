@@ -249,10 +249,8 @@ public class AddStock extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            q.addStock( id.getText(),  price.getText(), unit.getText(), name.getText(), color.getText(), 
-                    type.getSelectedItem().toString());
-        } catch(Exception e) { }
+        q.addStock( id.getText(),  price.getText(), unit.getText(), name.getText(), color.getText(), 
+                type.getSelectedItem().toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

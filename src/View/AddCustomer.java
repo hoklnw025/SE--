@@ -1,11 +1,13 @@
 package View;
 
 import Controller.Controller;
+import Model.Query;
 import javax.swing.JPanel;
 
 public class AddCustomer extends JPanel {
     
     Controller controller;
+    Query Q;
 
     public AddCustomer(Controller controller) {
         this.controller = controller;
@@ -222,9 +224,11 @@ public class AddCustomer extends JPanel {
         String socialNo = txtSocialNo.getText();
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
-        int gender = (rbtnMale.isSelected())?0:1;
         String telephoneNo = txtTelephoneNo.getText();
         String address = txtAddress.getText();
+                
+        Q.InsertCustomer(rbtnMale.isSelected(), txtSocialNo.getText(), txtTelephoneNo.getText(), 
+                            txtFirstName.getText(), txtLastName.getText(), txtAddress.getText());
         //controller.btnConfirmOnAddCustomer(socialNo, firstName, lastName, gender, telephoneNo, address);
     }//GEN-LAST:event_btnConfirmActionPerformed
 

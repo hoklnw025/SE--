@@ -19,6 +19,11 @@ public class UpdateStock extends javax.swing.JPanel {
     public UpdateStock(Controller controller) {
         this.controller = controller;
         setBounds(0, 0, 800, 600);
+        jTextField1.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
         initComponents();
     }
 
@@ -84,6 +89,11 @@ public class UpdateStock extends javax.swing.JPanel {
         jLabel7.setText("สี");
 
         jTextField1.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField3.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
 
@@ -259,6 +269,10 @@ public class UpdateStock extends javax.swing.JPanel {
         
         q.UpdateStock(proID, proType, proName, proPrice, proAmount, proColor);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

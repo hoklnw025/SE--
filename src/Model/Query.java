@@ -69,4 +69,13 @@ public class Query {
             d.disconnect();
         }
     }
+    
+    public void UpdateStock(String proID, String proType, String proName, String proPrice, String proAmount, String proColor) {
+         try {
+             String query = "update product(productID, productPrice, ProductUnit, productName, productColor, productType) "
+                     + "where productID =" + proID;
+         }catch(Exception ex) { }
+         
+    
+    }
 }

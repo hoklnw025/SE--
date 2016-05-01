@@ -46,7 +46,6 @@ public class AddStock extends javax.swing.JPanel {
         unit = new javax.swing.JTextField();
         color = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         type = new javax.swing.JComboBox();
 
@@ -132,9 +131,6 @@ public class AddStock extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        jButton2.setText("รายการสินค้า");
-
         jButton3.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         jButton3.setText("<< ย้อนกลับ");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -175,10 +171,7 @@ public class AddStock extends javax.swing.JPanel {
                             .addComponent(name)
                             .addComponent(price)
                             .addComponent(unit)
-                            .addComponent(color)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton2)))
+                            .addComponent(color))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(25, 25, 25))))
@@ -213,7 +206,6 @@ public class AddStock extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -245,7 +237,7 @@ public class AddStock extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controller.goToHome();
+        controller.goToStock();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -258,7 +250,6 @@ public class AddStock extends javax.swing.JPanel {
     private javax.swing.JTextField color;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

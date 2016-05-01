@@ -7,7 +7,7 @@ package Controller;
 
 /**
  *
- * @author USER
+ * @author USER, BestDark
  */
 public class SEProject {
 

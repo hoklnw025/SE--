@@ -24,10 +24,6 @@ public class Controller {
         frame.changeCurrent(new Invoice(this));
     }
     
-    public void goToTax() {
-        frame.changeCurrent(new Tax(this));
-    }
-    
     public void goToAddProduct() {
         frame.changeCurrent(new AddStock(this));
     }

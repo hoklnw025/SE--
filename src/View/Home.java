@@ -38,7 +38,6 @@ public class Home extends JPanel {
         jLabel4 = new javax.swing.JLabel();
         Order = new javax.swing.JButton();
         Stock = new javax.swing.JButton();
-        Tax = new javax.swing.JButton();
         AddCustom = new javax.swing.JButton();
         Quit = new javax.swing.JButton();
 
@@ -72,7 +71,7 @@ public class Home extends JPanel {
         jLabel4.setText("เมนูหลัก");
 
         Order.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        Order.setText("ใบส่งของ");
+        Order.setText("ใบส่งของ/ใบกำกับภาษี");
         Order.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OrderActionPerformed(evt);
@@ -84,14 +83,6 @@ public class Home extends JPanel {
         Stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StockActionPerformed(evt);
-            }
-        });
-
-        Tax.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        Tax.setText("ใบกำกับภาษี");
-        Tax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TaxActionPerformed(evt);
             }
         });
 
@@ -119,12 +110,11 @@ public class Home extends JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(270, Short.MAX_VALUE)
+                .addContainerGap(267, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Stock, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AddCustom, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Tax, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Order, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(270, 270, 270))
         );
@@ -133,17 +123,15 @@ public class Home extends JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(40, 40, 40)
                 .addComponent(Order)
-                .addGap(25, 25, 25)
-                .addComponent(Tax)
-                .addGap(25, 25, 25)
+                .addGap(30, 30, 30)
                 .addComponent(AddCustom)
-                .addGap(25, 25, 25)
+                .addGap(30, 30, 30)
                 .addComponent(Stock)
-                .addGap(25, 25, 25)
+                .addGap(30, 30, 30)
                 .addComponent(Quit)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -156,11 +144,11 @@ public class Home extends JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(54, 54, 54)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(54, 54, 54))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -171,10 +159,6 @@ public class Home extends JPanel {
     private void OrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderActionPerformed
         controller.goToInvoice();
     }//GEN-LAST:event_OrderActionPerformed
-
-    private void TaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaxActionPerformed
-        controller.goToTax();
-    }//GEN-LAST:event_TaxActionPerformed
 
     private void AddCustomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomActionPerformed
         controller.goToAddCustomer();
@@ -190,7 +174,6 @@ public class Home extends JPanel {
     private javax.swing.JButton Order;
     private javax.swing.JButton Quit;
     private javax.swing.JButton Stock;
-    private javax.swing.JButton Tax;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

@@ -33,61 +33,30 @@ public class Query {
             d.connect();
             d.execute(query);
             d.disconnect();
-        } catch(Exception ex) { 
-        }
+        } catch(Exception ex) { }
     }
     
     public void checkSocialNo(String s) {
-    	if(s.length() != 13) {
-    		JOptionPane.showMessageDialog(null,"Social NO must be 13 characters.");
-    	}
+        if(s.length() != 13) {
+            JOptionPane.showMessageDialog(null,"Social NO must be 13 characters.");
+        }
     }
     
     public void checkPhoneNumber(String s) {
-    	if(s.length()!= 10) {
-    		JOptionPane.showMessageDialog(null,"Phone Number must be 10 character.");
-    	}
+        if(s.length()!= 10) {
+            JOptionPane.showMessageDialog(null,"Phone Number must be 10 character.");
+        }
     }
     // end of add customer page
     
     public void SelectProduct(String t, String s){
-           try {
-               String query = "select * from Product where " + t + " = " + s;
-               d.connect();
-               d.executeQuery(query);
-               d.disconnect();
-           } catch(Exception ex) { }
-        }
-    
-    
-    public ArrayList<Product> getUsersList(){
-        ArrayList<Product> usersList = new ArrayList<Product>();
-        Connection con = null;
-        try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost/mirror","root","");
-        }catch(Exception e){
-     	   e.printStackTrace();
-        }     
-        String query = "SELECT * FROM  product";
-        Statement st;
-        ResultSet rs;
-        
         try {
-            st = con.createStatement();
-            rs = st.executeQuery(query);
-            Product user;
-            while(rs.next())
-            {
-                user = new Product(rs.getInt("productID"),rs.getString("productType"),rs.getString("productName")
-             		   				,rs.getString("productColor"), rs.getInt("productPrice"), rs.getInt("productAmount"));
-         	   //user = new Product(rs.getInt("id"),rs.getString("fname"),rs.getString("lname"),rs.getInt("age"));
-         	   usersList.add(user);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return usersList;
-    }
+            String query = "select * from Product where " + t + " = " + s;
+            d.connect();
+            d.executeQuery(query);
+            d.disconnect();
+        } catch(Exception ex) { }
+    }  
     
     public void addStock(String i, String p, String u, String n, String c, String m) {
         if(i.length() > 13) {
@@ -98,6 +67,6 @@ public class Query {
             d.connect();
             d.execute(query);
             d.disconnect();
-    	}
+        }
     }
 }

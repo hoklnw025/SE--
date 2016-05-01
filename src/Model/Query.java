@@ -50,7 +50,7 @@ public class Query {
     }
     // end of add customer page
     
-    public void ShowListTable(String t, String s){
+    public void SelectProduct(String t, String s){
            try {
                String query = "select * from Product where " + t + " = " + s;
                d.connect();

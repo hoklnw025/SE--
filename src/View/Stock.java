@@ -169,11 +169,11 @@ public class Stock extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    controller.goToHome();
+        controller.goToHome();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        q.ShowListTable(jComboBox1.getSelectedItem().toString(), jTextField1.getText());
+        q.SelectProduct(jComboBox1.getSelectedItem().toString(), jTextField1.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -6,6 +6,7 @@
 package Model;
 
 import Model.Database;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 /**
  *
@@ -48,4 +49,49 @@ public class Query {
     	}
     }
     // end of add customer page
+    
+    public void ShowListTable(){
+        ArrayList<Product> list = getUsersList();
+        DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
+        Object[] row = new Object[6];
+        for(int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getID();
+            row[1] = list.get(i).getType();
+            row[2] = list.get(i).getName();
+            row[3] = list.get(i).getColor();
+            row[4] = list.get(i).getPrice();
+            row[5] = list.get(i).getAmount();
+           
+            model.addRow(row);
+        }
+    }
+    
+    public ArrayList<Product> getUsersList(){
+        ArrayList<Product> usersList = new ArrayList<Product>();
+        Connection con = null;
+        try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost/mirror","root","");
+        }catch(Exception e){
+     	   e.printStackTrace();
+        }     
+        String query = "SELECT * FROM  product";
+        Statement st;
+        ResultSet rs;
+        
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            Product user;
+            while(rs.next())
+            {
+                user = new Product(rs.getInt("productID"),rs.getString("productType"),rs.getString("productName")
+             		   				,rs.getString("productColor"), rs.getInt("productPrice"), rs.getInt("productAmount"));
+         	   //user = new Product(rs.getInt("id"),rs.getString("fname"),rs.getString("lname"),rs.getInt("age"));
+         	   usersList.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return usersList;
+    }
 }

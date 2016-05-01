@@ -79,7 +79,7 @@ public class Stock extends javax.swing.JPanel {
 
         jComboBox1.setBackground(new java.awt.Color(240, 240, 240));
         jComboBox1.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "รหัสสินค้า", "ประเภทสินค้า", "ชื่อสินค้า", "สี", "ราคา" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "รหัสสินค้า", "ประเภทสินค้า", "ชื่อสินค้า", "สี" }));
 
         jButton1.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         jButton1.setText("ค้นหา");

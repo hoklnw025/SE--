@@ -140,7 +140,7 @@ public class AddStock extends javax.swing.JPanel {
         });
 
         type.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "รหัสสินค้า", "ประเภทสินค้า", "ชื่อสินค้า", "สี" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

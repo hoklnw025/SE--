@@ -17,6 +17,7 @@ public class Home extends JPanel {
 
     Controller controller;
     JFrame frame;
+    
     public Home(Controller controller) {
         this.controller = controller;
         initComponents();

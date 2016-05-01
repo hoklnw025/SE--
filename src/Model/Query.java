@@ -62,20 +62,21 @@ public class Query {
         if(i.length() > 13) {
             JOptionPane.showMessageDialog(null,"Invalid Product ID");
         } else {
-            String query = "insert into product (productID,productPrice,productUnit,productName,productColor"
-                    + ",productType) " + "values('" + i + "','" + p + "','" + u + "','" + n + "','" + c + "','" + m + "')";
+            String query = "insert into product (productID, productPrice, productAmount, productName, "
+                    + "productColor ,productType)values('" + i + "','" + p + "','" + u + "','" + n + "','" + c + "','" + m + "')";
             d.connect();
             d.execute(query);
             d.disconnect();
         }
     }
     
-    public void UpdateStock(String proID, String proType, String proName, String proPrice, String proAmount, String proColor) {
+    public void UpdateStock(String i, String t, String n, String p, String a, String c) {
          try {
-             String query = "update product(productID, productPrice, ProductUnit, productName, productColor, productType) "
-                     + "where productID =" + proID;
-         }catch(Exception ex) { }
-         
-    
+             String query = "update product(productID, productPrice, productName, productColor, productType, productAmount) "
+                     + "where productID =" +  i + "','" + p + "','" + n + "','" + c + "','" + t + "','" + a + "')";
+            d.connect();
+            d.execute(query);
+            d.disconnect();
+         } catch(Exception ex) {  }
     }
 }

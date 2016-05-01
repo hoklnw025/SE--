@@ -15,7 +15,7 @@ import Model.Query;
 public class UpdateStock extends javax.swing.JPanel {
 
     Controller controller;
-    Query Q;
+    Query q;
     public UpdateStock(Controller controller) {
         this.controller = controller;
         setBounds(0, 0, 800, 600);
@@ -257,8 +257,7 @@ public class UpdateStock extends javax.swing.JPanel {
         String proAmount = jTextField5.getText();
         String proColor = jTextField6.getText();
         
-        Q.UpdateStock(proID.isSelected(), proType.getText(), proName.getText(), 
-                            txtFirstName.getText(), txtLastName.getText(), txtAddress.getText());
+        q.UpdateStock(proID, proType, proName, proPrice, proAmount, proColor);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -50,21 +50,14 @@ public class Query {
     }
     // end of add customer page
     
-    public void ShowListTable(){
-        ArrayList<Product> list = getUsersList();
-        DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
-        Object[] row = new Object[6];
-        for(int i = 0; i < list.size(); i++) {
-            row[0] = list.get(i).getID();
-            row[1] = list.get(i).getType();
-            row[2] = list.get(i).getName();
-            row[3] = list.get(i).getColor();
-            row[4] = list.get(i).getPrice();
-            row[5] = list.get(i).getAmount();
-           
-            model.addRow(row);
+    public void ShowListTable(String t, String s){
+           try {
+               String query = "select * from product where " + t + " = " + s;
+           }catch(Exception ex){
+           }
+            
         }
-    }
+    
     
     public ArrayList<Product> getUsersList(){
         ArrayList<Product> usersList = new ArrayList<Product>();

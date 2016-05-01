@@ -1,8 +1,9 @@
 package View;
 
 import Controller.Controller;
+import javax.swing.JPanel;
 
-public class AddCustomer extends javax.swing.JPanel {
+public class AddCustomer extends JPanel {
     
     Controller controller;
 
@@ -173,7 +174,7 @@ public class AddCustomer extends javax.swing.JPanel {
                     .addComponent(lblAddress)
                     .addComponent(scrollPaneForTxtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnConfirm)
                     .addComponent(btnCancel))
                 .addContainerGap(28, Short.MAX_VALUE))

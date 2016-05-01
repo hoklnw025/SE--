@@ -53,6 +53,9 @@ public class Query {
     public void ShowListTable(String t, String s){
            try {
                String query = "select * from Product where " + t + " = " + s;
+               d.connect();
+               d.executeQuery(query);
+               d.disconnect();
            } catch(Exception ex) { }
         }
     

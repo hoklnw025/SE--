@@ -1,6 +1,9 @@
 package Model;
 
+import com.mysql.jdbc.PreparedStatement;
 import edu.sit.cs.db.CSDbDelegate;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Database {
     private CSDbDelegate db;
@@ -14,5 +17,8 @@ public class Database {
     }
     public void disconnect(){
         db.disconnect();
+    }
+    public ArrayList<HashMap> rows(String s){
+        return db.queryRows(s);
     }
 }

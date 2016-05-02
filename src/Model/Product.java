@@ -9,24 +9,25 @@ package Model;
  * @author BestDark
  */
 public class Product {
-    private int id;
+    private String id;
     private String type;
     private String name;
     private String color;
-    private int price;
-    private int unit;
-    private int amount;
+    private String price;
+    private String unit;
+    private String amount;
 	
-    public Product(int id, String type , String name, String color , int price, int amount) {
+    public Product(String id, String type , String name, String color , String price, String unit, String amount) {
         this.id = id;
         this.type = type;
         this.name = name;
         this.color = color;
         this.price = price;
+        this.unit = unit;
         this.amount = amount;
     }
     
-    public int getID() {
+    public String getID() {
         return this.id;
     }
     
@@ -41,11 +42,13 @@ public class Product {
     public String getColor() {
         return this.color;
     }
-    public int getPrice() {
+    public String getPrice() {
         return this.price;
     }
-    public int getAmount() {
+    public String getAmount() {
         return this.amount;
     }
-
+    public String getUnit() {
+        return this.unit;
+    }
 }

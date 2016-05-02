@@ -7,7 +7,7 @@ package Model;
 
 import Model.Database;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.HashMap;
 /**
  *
  * @author BestDark Fuck Nat nana
@@ -57,5 +57,31 @@ public class Query {
             db.disconnect();
          } catch(Exception ex) {  }
     }
-    
+    public Product StockDB(int i){
+            Product product = null;
+            String query = "SELECT * FROM `stock` ";
+            db.connect();
+            ArrayList<HashMap> list = db.rows(query);
+            for(HashMap l : list) 
+            {
+                if(l.get("product_id").equals(i+"")){
+                    product = new Product(""+l.get("product_id"), ""+l.get("product_type"), ""+l.get("product_name"), ""+l.get("product_color"), ""+l.get("product_cost"), ""+l.get("product_unit"), ""+l.get("product_amount"));
+                    break;
+                }
+            }
+            db.disconnect();
+            return product;
+    }
+    public int CountStock(){
+            int i = 0;
+            String query = "SELECT * FROM `stock` ";
+            db.connect();
+            ArrayList<HashMap> list = db.rows(query);
+            for(HashMap l : list) 
+            {
+                i++;
+            }
+            db.disconnect();
+            return i;
+    }
 }

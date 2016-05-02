@@ -288,13 +288,24 @@ public class UpdateStock extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String proID = jTextField1.getText();
-        String proNa = jTextField3.getText();
-        String proPri = jTextField4.getText();
-        String proAmo = jTextField5.getText();
-        String proCo = jTextField6.getText();
-        q.UpdateStock(proID);
-        q.UpdateStock(String i, String t, String n, String c, String co, String u, String amo)
+        String i = jTextField1.getText();
+        String t = jComboBox1.getSelectedItem().toString();
+        String n = jTextField3.getText();
+        String p = jTextField4.getText();
+        String a = jTextField5.getText();
+        String c = jTextField6.getText();
+        String u = jTextField2.getText();
+        
+        String iOld = jLabel9.getText();
+        String tOld = jLabel10.getText();
+        String nOld = jLabel11.getText();
+        String pOld = jLabel12.getText();
+        String aOld = jLabel13.getText();
+        String cOld = jLabel14.getText();
+        String uOld = jLabel15.getText();
+        
+        String sql = q.stockOld(iOld, tOld, nOld, pOld, aOld, cOld, uOld);
+        q.updateStockNew(sql, i, t, n, p, a, c, u);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

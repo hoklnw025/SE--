@@ -48,10 +48,16 @@ public class Query {
         }catch(Exception e){ }        
     }
     
-    public void UpdateStock(String i) {
+    public void UpdateStock(String i, String t, String n, String c, String co, String u, String amo) {
          try {
-             String query = "update product(productID, productPrice, productName, productColor, productType, productAmount) "
-                     + "where productID ='" +  i + "')";
+             String query = "UPDATE 'stock' SET " + "'product_id' = '" + i + "' ,'product_type' = '" + t + "' ,'product_name = '" + n
+                     +"' ,`product_color` = '" + c + "' ,`product_cost` = '" + co + "' ,`product_unit` = '" + u +"' ,`product_amount` = '" + amo + "'"
+                     + " WHERE " + "'product_id' = '" + i + "' ,'product_type' = '" + t + "' ,'product_name = '" + n +"' ,`product_color` = '" + c 
+                     + "' ,`product_cost` = '" + co + "' ,`product_unit` = '" + u +"' ,`product_amount` = '" + amo + ""; 
+                     
+                     /*
+                     "update product(productID, productPrice, productName, productColor, productType, productAmount) "
+                     + "where productID ='" +  i + "')";*/
             db.connect();
             db.execute(query);
             db.disconnect();

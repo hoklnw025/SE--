@@ -40,8 +40,8 @@ public class Stock extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        gotoUp = new javax.swing.JButton();
+        gotoAdd = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 204, 255));
@@ -91,11 +91,21 @@ public class Stock extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        jButton2.setText("แก้ไข");
+        gotoUp.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        gotoUp.setText("แก้ไข");
+        gotoUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gotoUpActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        jButton3.setText("เพิ่มสินค้า");
+        gotoAdd.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        gotoAdd.setText("เพิ่มสินค้า");
+        gotoAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gotoAddActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         jButton4.setText("<< ย้อนกลับ ");
@@ -127,9 +137,9 @@ public class Stock extends javax.swing.JPanel {
                         .addGap(15, 15, 15)
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(gotoUp)
                         .addGap(25, 25, 25)
-                        .addComponent(jButton3)
+                        .addComponent(gotoAdd)
                         .addGap(25, 25, 25))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -145,8 +155,8 @@ public class Stock extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(gotoAdd)
+                    .addComponent(gotoUp))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -176,11 +186,19 @@ public class Stock extends javax.swing.JPanel {
         q.SelectProduct(jComboBox1.getSelectedItem().toString(), jTextField1.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void gotoUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoUpActionPerformed
+        controller.goToUpdate();
+    }//GEN-LAST:event_gotoUpActionPerformed
+
+    private void gotoAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoAddActionPerformed
+        controller.goToAddProduct();
+    }//GEN-LAST:event_gotoAddActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton gotoAdd;
+    private javax.swing.JButton gotoUp;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;

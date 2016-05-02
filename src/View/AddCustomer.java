@@ -2,22 +2,21 @@ package View;
 
 import Controller.Controller;
 import Model.Query;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class AddCustomer extends JPanel {
+public class AddCustomer extends javax.swing.JPanel {
     
     Controller controller;
-    Query Q;
+    Query Q = new Query();
 
     public AddCustomer(Controller controller) {
         this.controller = controller;
         initComponents();
         setBounds(0, 0, 800, 600);
-        btnGroupGender.add(rbtnMale);
-        btnGroupGender.add(rbtnFemale);
-        txtSocialNo.setText("");
-        txtFirstName.setText("");
-        txtLastName.setText("");
+        Fname.setText("");
+        Lname.setText("");
+        SocialNo.setText("");
         txtTelephoneNo.setText("");
         txtAddress.setText("");
     }
@@ -34,16 +33,15 @@ public class AddCustomer extends JPanel {
         lblGender = new javax.swing.JLabel();
         lblTelephoneNo = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
-        txtSocialNo = new javax.swing.JTextField();
-        txtFirstName = new javax.swing.JTextField();
-        txtLastName = new javax.swing.JTextField();
+        Fname = new javax.swing.JTextField();
+        Lname = new javax.swing.JTextField();
+        SocialNo = new javax.swing.JTextField();
         txtTelephoneNo = new javax.swing.JTextField();
-        rbtnMale = new javax.swing.JRadioButton();
-        rbtnFemale = new javax.swing.JRadioButton();
         scrollPaneForTxtAddress = new javax.swing.JScrollPane();
         txtAddress = new javax.swing.JTextArea();
         btnConfirm = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        chooseSex = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -70,22 +68,13 @@ public class AddCustomer extends JPanel {
         lblAddress.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         lblAddress.setText("ที่อยู่");
 
-        txtSocialNo.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        Fname.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
 
-        txtFirstName.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        Lname.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
 
-        txtLastName.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        SocialNo.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
 
         txtTelephoneNo.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-
-        rbtnMale.setBackground(new java.awt.Color(255, 255, 255));
-        rbtnMale.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        rbtnMale.setSelected(true);
-        rbtnMale.setText("Male");
-
-        rbtnFemale.setBackground(new java.awt.Color(255, 255, 255));
-        rbtnFemale.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        rbtnFemale.setText("Female");
 
         txtAddress.setColumns(20);
         txtAddress.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
@@ -108,6 +97,9 @@ public class AddCustomer extends JPanel {
             }
         });
 
+        chooseSex.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        chooseSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ชาย", "หญิง" }));
+
         javax.swing.GroupLayout emptyPanelLayout = new javax.swing.GroupLayout(emptyPanel);
         emptyPanel.setLayout(emptyPanelLayout);
         emptyPanelLayout.setHorizontalGroup(
@@ -128,17 +120,14 @@ public class AddCustomer extends JPanel {
                             .addComponent(lblGender, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(emptyPanelLayout.createSequentialGroup()
-                        .addComponent(rbtnMale)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rbtnFemale))
                     .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                        .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtSocialNo, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(SocialNo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                        .addComponent(Lname, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Fname, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtTelephoneNo, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(scrollPaneForTxtAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)))
+                        .addComponent(scrollPaneForTxtAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
+                    .addComponent(chooseSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(274, Short.MAX_VALUE))
             .addGroup(emptyPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
@@ -152,21 +141,20 @@ public class AddCustomer extends JPanel {
             .addGroup(emptyPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSocialNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFirstName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLastName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SocialNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSocialNo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnMale)
-                    .addComponent(rbtnFemale)
-                    .addComponent(lblGender))
+                    .addComponent(lblGender)
+                    .addComponent(chooseSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTelephoneNo)
@@ -181,6 +169,8 @@ public class AddCustomer extends JPanel {
                     .addComponent(btnCancel))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
+
+        chooseSex.getAccessibleContext().setAccessibleName("chooseSex");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -212,7 +202,7 @@ public class AddCustomer extends JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(emptyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,14 +211,26 @@ public class AddCustomer extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        String socialNo = txtSocialNo.getText();
-        String firstName = txtFirstName.getText();
-        String lastName = txtLastName.getText();
+        String socialNo = SocialNo.getText();
+        String firstName = Fname.getText();
+        String lastName = Lname.getText();
         String telephoneNo = txtTelephoneNo.getText();
         String address = txtAddress.getText();
-                
-        Q.InsertCustomer(rbtnMale.isSelected(), txtSocialNo.getText(), txtTelephoneNo.getText(), 
-                            txtFirstName.getText(), txtLastName.getText(), txtAddress.getText());
+        String sex = chooseSex.getSelectedItem().toString();
+        if(socialNo.length()==0||firstName.length()==0||lastName.length()==0||telephoneNo.length()==0||address.length()==0) {
+            JOptionPane.showMessageDialog(null,"กรุณากรอกข้อมูลให้ครบด้วย!");
+        }
+        else if(socialNo.length()==13) {
+            if(firstName.length()<=50||lastName.length()<=50) {
+                if(telephoneNo.length()==10){
+                    Q.InsertCustomer(socialNo, firstName, lastName, sex , telephoneNo, address);
+                    JOptionPane.showMessageDialog(null,"เรียบร้อยแล้วครับ/ค่ะ!");
+                    controller.goToHome();
+                }else{JOptionPane.showMessageDialog(null,"คุณกรอกเบอร์ไม่ถูกต้อง!");}
+            }else{JOptionPane.showMessageDialog(null,"คุณกรอกชื่อยาวเกินกว่า 50 ตัวอักษร!");}
+        }else{
+            JOptionPane.showMessageDialog(null,"คุณกรอกบัตรประชาชนไม่ถูกต้อง!");
+        }        
         //controller.btnConfirmOnAddCustomer(socialNo, firstName, lastName, gender, telephoneNo, address);
     }//GEN-LAST:event_btnConfirmActionPerformed
 
@@ -238,9 +240,13 @@ public class AddCustomer extends JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Fname;
+    private javax.swing.JTextField Lname;
+    private javax.swing.JTextField SocialNo;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnConfirm;
     private javax.swing.ButtonGroup btnGroupGender;
+    private javax.swing.JComboBox<String> chooseSex;
     private javax.swing.JPanel emptyPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -250,13 +256,8 @@ public class AddCustomer extends JPanel {
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblSocialNo;
     private javax.swing.JLabel lblTelephoneNo;
-    private javax.swing.JRadioButton rbtnFemale;
-    private javax.swing.JRadioButton rbtnMale;
     private javax.swing.JScrollPane scrollPaneForTxtAddress;
     private javax.swing.JTextArea txtAddress;
-    private javax.swing.JTextField txtFirstName;
-    private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtSocialNo;
     private javax.swing.JTextField txtTelephoneNo;
     // End of variables declaration//GEN-END:variables
 }

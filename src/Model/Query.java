@@ -13,70 +13,49 @@ import javax.swing.JOptionPane;
  * @author BestDark Fuck Nat nana
  */
 public class Query {
-    Database d;
+    Database db = new Database();
     
     //for add Customer page
-    public void InsertCustomer(boolean sex, String s, String p, String fn, String ls, String add){
+    public void InsertCustomer(String id, String fn, String ln, String sex, String tel, String add){
         try {
-            int gender = sex?0:1;
-            String CusSex = "";
-                  
-            if(gender == 1) {
-                CusSex = "female";
-            } else {
-                CusSex = "male";
-            }     
-        	checkSocialNo(s);
-        	checkPhoneNumber(p);
-        	String query = "insert into customer (socialNo,name,surName,sex,phoneNumber,address) " 
-                                + "values('" + s +"','" + fn + "','" + ls + "','" + CusSex + "','" + p + "','" + add +"')";
-            d.connect();
-            d.execute(query);
-            d.disconnect();
+ 
+            String query = "INSERT INTO `customer`(`card_id`, `first_name`, `last_name`, `gender`, `tel`, `address`) VALUES ('"+id+"','"+fn+"','"+ln+"','"+sex+"','"+tel+"','"+add+"')";
+            db.connect();
+            db.execute(query);
+            db.disconnect();
         } catch(Exception ex) { }
     }
     
-    public void checkSocialNo(String s) {
-        if(s.length() != 13) {
-            JOptionPane.showMessageDialog(null,"Social NO must be 13 characters.");
-        }
-    }
-    
-    public void checkPhoneNumber(String s) {
-        if(s.length()!= 10) {
-            JOptionPane.showMessageDialog(null,"Phone Number must be 10 character.");
-        }
-    }
     // end of add customer page
     
     public void SelectProduct(String t, String s){
         try {
             String query = "select * from Product where " + t + " = " + s;
-            d.connect();
-            d.executeQuery(query);
-            d.disconnect();
+            db.connect();
+            db.execute(query);
+            db.disconnect();
         } catch(Exception ex) { }
     }  
     
-    public void addStock(String i, String p, String u, String n, String c, String m) {
+    public void addStock(String i, String t, String n, String c, String co, String u, String amo) {
         if(i.length() > 13) {
             JOptionPane.showMessageDialog(null,"Invalid Product ID");
         } else {
-            String query = "insert into product (productID, productPrice, productAmount, productName, "
-                    + "productColor ,productType)values('" + i + "','" + p + "','" + u + "','" + n + "','" + c + "','" + m + "')";
-            d.connect();
-            d.execute(query);
-            d.disconnect();
+            String query = "INSERT INTO `stock`(`product_id`, `product_type`, `product_name`, `product_color`, `product_cost`, `product_unit`, `product_amount`) "
+                    + "values ('" + i + "','" + t + "','" + n + "','" + c + "','" + co + "','" + u + "','" + amo + "')";
+            db.connect();
+            db.execute(query);
+            db.disconnect();
         }
     }
     
-    public void UpdateStock(String i, String t, String n, String p, String a, String c) {
+    public void UpdateStock(String i) {
          try {
              String query = "update product(productID, productPrice, productName, productColor, productType, productAmount) "
-                     + "where productID =" +  i + "','" + p + "','" + n + "','" + c + "','" + t + "','" + a + "')";
-            d.connect();
-            d.execute(query);
-            d.disconnect();
+                     + "where productID ='" +  i + "')";
+            db.connect();
+            db.execute(query);
+            db.disconnect();
          } catch(Exception ex) {  }
     }
 }

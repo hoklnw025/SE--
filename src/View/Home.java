@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author USER
  */
-public class Home extends JPanel {
+public class Home extends javax.swing.JPanel {
 
     Controller controller;
     JFrame frame;

@@ -64,6 +64,7 @@ public class Query {
                      +"' ,`product_color` = '" + c + "' ,`product_cost` = '" + co + "' ,`product_unit` = '" + u +"' ,`product_amount` = '" + amo + "'";
         return old;
     }
+    
     public Product StockDB(int i){
             Product product = null;
             String query = "SELECT * FROM `stock` ";

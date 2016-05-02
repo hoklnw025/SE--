@@ -41,11 +41,14 @@ public class AddCustomer extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextArea();
         btnConfirm = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        chooseSex = new javax.swing.JComboBox<>();
+        chooseSex = new javax.swing.JComboBox<String>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 102));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         emptyPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -98,7 +101,7 @@ public class AddCustomer extends javax.swing.JPanel {
         });
 
         chooseSex.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        chooseSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ชาย", "หญิง" }));
+        chooseSex.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ชาย", "หญิง" }));
 
         javax.swing.GroupLayout emptyPanelLayout = new javax.swing.GroupLayout(emptyPanel);
         emptyPanel.setLayout(emptyPanelLayout);
@@ -128,7 +131,7 @@ public class AddCustomer extends javax.swing.JPanel {
                         .addComponent(txtTelephoneNo, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(scrollPaneForTxtAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
                     .addComponent(chooseSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
             .addGroup(emptyPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(btnCancel)
@@ -139,7 +142,7 @@ public class AddCustomer extends javax.swing.JPanel {
         emptyPanelLayout.setVerticalGroup(
             emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(emptyPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFirstName))
@@ -167,7 +170,7 @@ public class AddCustomer extends javax.swing.JPanel {
                 .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnConfirm)
                     .addComponent(btnCancel))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         chooseSex.getAccessibleContext().setAccessibleName("chooseSex");
@@ -202,11 +205,11 @@ public class AddCustomer extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(37, 37, 37)
                 .addComponent(emptyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addGap(38, 38, 38))
         );
     }// </editor-fold>//GEN-END:initComponents
 

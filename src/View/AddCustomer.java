@@ -228,9 +228,7 @@ public class AddCustomer extends javax.swing.JPanel {
                     controller.goToHome();
                 }else{JOptionPane.showMessageDialog(null,"คุณกรอกเบอร์ไม่ถูกต้อง!");}
             }else{JOptionPane.showMessageDialog(null,"คุณกรอกชื่อยาวเกินกว่า 50 ตัวอักษร!");}
-        }else{
-            JOptionPane.showMessageDialog(null,"คุณกรอกบัตรประชาชนไม่ถูกต้อง!");
-        }        
+        }else{JOptionPane.showMessageDialog(null,"คุณกรอกบัตรประชาชนไม่ถูกต้อง!");}        
         //controller.btnConfirmOnAddCustomer(socialNo, firstName, lastName, gender, telephoneNo, address);
     }//GEN-LAST:event_btnConfirmActionPerformed
 

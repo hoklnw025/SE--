@@ -19,7 +19,8 @@ public class Query {
     public void InsertCustomer(String id, String fn, String ln, String sex, String tel, String add){
         try {
  
-            String query = "INSERT INTO `customer`(`card_id`, `first_name`, `last_name`, `gender`, `tel`, `address`) VALUES ('"+id+"','"+fn+"','"+ln+"','"+sex+"','"+tel+"','"+add+"')";
+            String query = "INSERT INTO `customer`(`card_id`, `first_name`, `last_name`, `gender`, `tel`, `address`) "
+                    + "VALUES ('"+id+"','"+fn+"','"+ln+"','"+sex+"','"+tel+"','"+add+"')";
             db.connect();
             db.execute(query);
             db.disconnect();
@@ -38,15 +39,13 @@ public class Query {
     }  
     
     public void addStock(String i, String t, String n, String c, String co, String u, String amo) {
-        if(i.length() > 13) {
-            JOptionPane.showMessageDialog(null,"Invalid Product ID");
-        } else {
+        try {
             String query = "INSERT INTO `stock`(`product_id`, `product_type`, `product_name`, `product_color`, `product_cost`, `product_unit`, `product_amount`) "
-                    + "values ('" + i + "','" + t + "','" + n + "','" + c + "','" + co + "','" + u + "','" + amo + "')";
+                    + "VALUES ('"+i+"','"+t+"','"+n+"','"+c+"','"+co+"','"+u+"','"+amo+"')";
             db.connect();
             db.execute(query);
             db.disconnect();
-        }
+        }catch(Exception e){ }        
     }
     
     public void UpdateStock(String i) {
@@ -58,4 +57,5 @@ public class Query {
             db.disconnect();
          } catch(Exception ex) {  }
     }
+    
 }

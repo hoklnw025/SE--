@@ -82,7 +82,7 @@ public class Tax extends javax.swing.JPanel {
 
             },
             new String [] {
-                "จำนวน", "รายการ", "หน่วยละ", "ราคา"
+                "รายการ", "จำนวน", "หน่วยละ", "ราคา"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

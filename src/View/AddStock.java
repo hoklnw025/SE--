@@ -7,12 +7,13 @@ package View;
 
 import Controller.Controller;
 import Model.Query;
+import javax.swing.JOptionPane;
 /**
  *
  * @author USER
  */
 public class AddStock extends javax.swing.JPanel {
-    Query q;
+    Query q = new Query();
     Controller controller;
     
     public AddStock(Controller controller) {
@@ -142,7 +143,7 @@ public class AddStock extends javax.swing.JPanel {
         });
 
         type.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "รหัสสินค้า", "ประเภทสินค้า", "ชื่อสินค้า", "สี" }));
+        type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "กระจก", "กระจกบาง", "กระจกหนา", "อลูมิเนียม", "เหล็ก", " " }));
 
         jLabel9.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -174,7 +175,7 @@ public class AddStock extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(328, Short.MAX_VALUE))
+                        .addContainerGap(344, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
@@ -256,7 +257,27 @@ public class AddStock extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        q.addStock( id.getText(), type.getSelectedItem().toString(),  name.getText(), color.getText(), price.getText(), unit.getText(), amount.getText());
+        String i = id.getText();
+        String t = type.getSelectedItem().toString();
+        String n = name.getText();
+        String c = color.getText();
+        String p = price.getText();
+        String u = unit.getText();
+        String amo = amount.getText();
+        if(i.length()==0||n.length()==0||c.length()==0||p.length()==0||u.length()==0||amo.length()==0){
+            JOptionPane.showMessageDialog(null,"กรุรากรอกข้อมูลด้วยครับ/ค่ะ!");
+        }
+        else if(i.length()<=11) {
+            if(t.length()<=50) {
+                if(c.length()<=50){
+                    if(u.length()<=50){
+                        q.addStock(i, t, n , c , p ,u , amo);
+                        JOptionPane.showMessageDialog(null,"เรียบร้อยแล้วครับ/ค่ะ!");
+                        controller.goToStock();
+                    }else{JOptionPane.showMessageDialog(null,"คุณกรอกหน่วยของยาวเกินไป!");}
+                }else{JOptionPane.showMessageDialog(null,"คุณกรอกสียาวเกินไป!");}
+            }else{JOptionPane.showMessageDialog(null,"คุณกรอกประเภทสินค้ายาวเกินไป!");}
+        }else{JOptionPane.showMessageDialog(null,"คุณกรอกรหัสสินค้าเกินตามที่กำหนด!");}
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

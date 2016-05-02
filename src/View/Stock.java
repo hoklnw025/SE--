@@ -6,7 +6,9 @@
 package View;
 
 import Controller.Controller;
+import Model.Product;
 import Model.Query;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,7 +17,7 @@ import Model.Query;
 public class Stock extends javax.swing.JPanel {
 
     Controller controller;
-    Query q;
+    Query q = new Query();
     
     public Stock(Controller controller) {
         this.controller = controller;
@@ -36,7 +38,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        stockTable = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
@@ -66,8 +68,8 @@ public class Stock extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTable2.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        stockTable.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 18)); // NOI18N
+        stockTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -75,7 +77,16 @@ public class Stock extends javax.swing.JPanel {
                 "รหัสสินค้า", "ประเภทสินค้า ", "ชื่อสินค้า ", "สี ", "ราคา ", "หน่วย ", "จำนวนคงเหลือ"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        stockTable.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                stockTableAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane2.setViewportView(stockTable);
 
         jTextField1.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
 
@@ -194,6 +205,24 @@ public class Stock extends javax.swing.JPanel {
         controller.goToAddProduct();
     }//GEN-LAST:event_gotoAddActionPerformed
 
+    private void stockTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_stockTableAncestorAdded
+        DefaultTableModel model = (DefaultTableModel) stockTable.getModel();
+        int count = q.CountStock();
+        Product product;
+        int i;
+        for(i=1;i<=count;i++) {
+            product = q.StockDB(i);
+            model.addRow(new Object[]{product.getID(),
+                product.getType(),
+                product.getName(),
+                product.getColor(),
+                product.getPrice(),
+                product.getUnit(),
+                product.getAmount()
+            });
+        }
+    }//GEN-LAST:event_stockTableAncestorAdded
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton gotoAdd;
@@ -205,7 +234,7 @@ public class Stock extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable stockTable;
     // End of variables declaration//GEN-END:variables
 }

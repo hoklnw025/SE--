@@ -64,24 +64,19 @@
                       <Component id="label5" alignment="0" max="32767" attributes="0"/>
                       <Component id="label4" alignment="0" max="32767" attributes="0"/>
                       <Component id="label3" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="label2" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="label1" alignment="0" max="32767" attributes="0"/>
                       <Component id="label6" pref="260" max="32767" attributes="0"/>
+                      <Component id="label2" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="45" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jTextField1" alignment="1" pref="260" max="32767" attributes="0"/>
-                          <Component id="jTextField3" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jTextField4" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jTextField5" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jTextField6" alignment="1" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jTextField3" alignment="1" pref="260" max="32767" attributes="0"/>
+                      <Component id="jTextField4" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jTextField5" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jTextField6" alignment="1" max="32767" attributes="0"/>
                       <Component id="jComboBox1" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="jTextField1" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               </Group>
@@ -103,16 +98,16 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <Component id="label2" pref="33" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jTextField1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -208,16 +203,6 @@
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="&#xe2a;&#xe35;"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="2005_iannnnnGMO" size="24" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField3">
           <Properties>
@@ -317,17 +302,28 @@
               <Font name="2005_iannnnnGMO" size="24" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="5">
+                <StringItem index="0" value="&#xe01;&#xe23;&#xe30;&#xe08;&#xe01;"/>
+                <StringItem index="1" value="&#xe01;&#xe23;&#xe30;&#xe08;&#xe01;&#xe1a;&#xe32;&#xe07;"/>
+                <StringItem index="2" value="&#xe01;&#xe23;&#xe30;&#xe08;&#xe01;&#xe2b;&#xe19;&#xe32;"/>
+                <StringItem index="3" value="&#xe2d;&#xe25;&#xe39;&#xe21;&#xe34;&#xe40;&#xe19;&#xe35;&#xe22;&#xe21;"/>
+                <StringItem index="4" value="&#xe40;&#xe2b;&#xe25;&#xe47;&#xe01;"/>
               </StringArray>
             </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="2005_iannnnnGMO" size="24" style="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -51,7 +51,7 @@ public class Query {
     public void updateStockNew(String old, String i, String t, String n, String c, String co, String u, String amo) {
          try {
              String query = "UPDATE 'stock' SET " + "'product_id' = '" + i + "' ,'product_type' = '" + t + "' ,'product_name = '" + n
-                     +"' ,`product_color` = '" + c + "' ,`product_cost` = '" + co + "' ,`product_unit` = '" + u +"' ,`product_amount` = '" + amo + "'"
+                     + "' ,`product_color` = '" + c + "' ,`product_cost` = '" + co + "' ,`product_unit` = '" + u +"' ,`product_amount` = '" + amo + "'"
                      + " WHERE " + old; 
             db.connect();
             db.execute(query);

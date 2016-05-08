@@ -8,6 +8,7 @@ package View;
 import Controller.Controller;
 import Model.Product;
 import Model.Query;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,7 +19,6 @@ public class Stock extends javax.swing.JPanel {
 
     Controller controller;
     Query q = new Query();
-    
     public Stock(Controller controller) {
         this.controller = controller;
         setBounds(0, 0, 800, 600);
@@ -71,7 +71,7 @@ public class Stock extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        stockTable.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 18)); // NOI18N
+        stockTable.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         stockTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -79,7 +79,15 @@ public class Stock extends javax.swing.JPanel {
             new String [] {
                 "รหัสสินค้า", "ประเภทสินค้า ", "ชื่อสินค้า ", "สี ", "ราคา ", "หน่วย ", "จำนวนคงเหลือ"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         stockTable.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -90,6 +98,18 @@ public class Stock extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(stockTable);
+        if (stockTable.getColumnModel().getColumnCount() > 0) {
+            stockTable.getColumnModel().getColumn(0).setResizable(false);
+            stockTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+            stockTable.getColumnModel().getColumn(1).setResizable(false);
+            stockTable.getColumnModel().getColumn(2).setResizable(false);
+            stockTable.getColumnModel().getColumn(3).setResizable(false);
+            stockTable.getColumnModel().getColumn(4).setResizable(false);
+            stockTable.getColumnModel().getColumn(5).setResizable(false);
+            stockTable.getColumnModel().getColumn(5).setPreferredWidth(20);
+            stockTable.getColumnModel().getColumn(6).setResizable(false);
+            stockTable.getColumnModel().getColumn(6).setPreferredWidth(20);
+        }
 
         jTextField1.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
 
@@ -201,7 +221,14 @@ public class Stock extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void gotoUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoUpActionPerformed
-        controller.goToUpdate();
+        int row = stockTable.getSelectedRow();
+        int column = 0;
+        if(row == -1){
+            JOptionPane.showMessageDialog(null,"กรุณาเลือกสินค้าที่คุณต้องการจะแก้ไข!");
+        } else {
+            System.out.println(stockTable.getValueAt(row, column));
+            controller.goToUpdate();
+        }
     }//GEN-LAST:event_gotoUpActionPerformed
 
     private void gotoAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoAddActionPerformed

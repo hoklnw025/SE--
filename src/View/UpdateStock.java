@@ -6,6 +6,7 @@
 package View;
 
 import Controller.Controller;
+import Model.EditProduct;
 import Model.Query;
 import javax.swing.JOptionPane;
 
@@ -17,10 +18,25 @@ public class UpdateStock extends javax.swing.JPanel {
 
     Controller controller;
     Query q;
-    public UpdateStock(Controller controller) {
+    public UpdateStock(Controller controller, EditProduct edit) {
         this.controller = controller;
         setBounds(0, 0, 800, 600);
         initComponents();
+        //SET for old
+        oldID.setText(edit.getId());
+        oldType.setText(edit.getType());
+        oldName.setText(edit.getName());
+        oldPrice.setText(edit.getPrice());
+        oldAmount.setText(edit.getAmount());
+        oldColor.setText(edit.getColor());
+        oldUnit.setText(edit.getUnit());
+        //SET for new
+        newID.setText(edit.getId());
+        newName.setText(edit.getName());
+        newPrice.setText(edit.getPrice());
+        newAmount.setText(edit.getAmount());
+        newColor.setText(edit.getColor());
+        newUnit.setText(edit.getUnit());
     }
 
     /**
@@ -112,6 +128,7 @@ public class UpdateStock extends javax.swing.JPanel {
             }
         });
 
+        newType.setBackground(new java.awt.Color(255, 255, 153));
         newType.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         newType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "กระจก", "กระจกบาง", "กระจกหนา", "อลูมิเนียม", "เหล็ก" }));
 

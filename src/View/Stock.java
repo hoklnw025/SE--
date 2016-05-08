@@ -226,8 +226,7 @@ public class Stock extends javax.swing.JPanel {
         if(row == -1){
             JOptionPane.showMessageDialog(null,"กรุณาเลือกสินค้าที่คุณต้องการจะแก้ไข!");
         } else {
-            System.out.println(stockTable.getValueAt(row, column));
-            controller.goToUpdate();
+            controller.goToUpdate((String) stockTable.getValueAt(row, column));
         }
     }//GEN-LAST:event_gotoUpActionPerformed
 

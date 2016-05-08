@@ -1,8 +1,7 @@
 package Controller;
 
-import Model.*;
+import Model.EditProduct;
 import View.*;
-import java.util.ArrayList;
 import javax.swing.*;
 
 public class Controller {
@@ -36,8 +35,10 @@ public class Controller {
         frame.changeCurrent(new Stock(this));
     }
     
-    public void goToUpdate() {
-        frame.changeCurrent(new UpdateStock(this));
+    public void goToUpdate(String i) {
+        EditProduct edit = new EditProduct(i);
+        UpdateStock panel = new UpdateStock(this, edit);
+        frame.changeCurrent(panel);
     }
     
     public void Quit() {

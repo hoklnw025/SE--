@@ -8,6 +8,7 @@ package View;
 import Controller.Controller;
 import Model.Product;
 import Model.Query;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -39,12 +40,12 @@ public class Stock extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         stockTable = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        searchTxt = new javax.swing.JTextField();
+        Choose = new javax.swing.JComboBox();
+        Search = new javax.swing.JButton();
         gotoUp = new javax.swing.JButton();
         gotoAdd = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 204, 255));
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -111,17 +112,17 @@ public class Stock extends javax.swing.JPanel {
             stockTable.getColumnModel().getColumn(6).setPreferredWidth(20);
         }
 
-        jTextField1.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        searchTxt.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
 
-        jComboBox1.setBackground(new java.awt.Color(240, 240, 240));
-        jComboBox1.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "รหัสสินค้า", "ประเภทสินค้า", "ชื่อสินค้า", "สี" }));
+        Choose.setBackground(new java.awt.Color(240, 240, 240));
+        Choose.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        Choose.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "รหัสสินค้า", "ประเภทสินค้า", "ชื่อสินค้า", "สี" }));
 
-        jButton1.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        jButton1.setText("ค้นหา");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Search.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        Search.setText("ค้นหา");
+        Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SearchActionPerformed(evt);
             }
         });
 
@@ -141,11 +142,11 @@ public class Stock extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        jButton4.setText("<< ย้อนกลับ ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Back.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        Back.setText("<< ย้อนกลับ ");
+        Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BackActionPerformed(evt);
             }
         });
 
@@ -160,16 +161,16 @@ public class Stock extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Choose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
-                                .addComponent(jButton1)
+                                .addComponent(Search)
                                 .addGap(15, 15, 15)))
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jButton4)
+                        .addComponent(Back)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(gotoUp)
                         .addGap(25, 25, 25)
@@ -181,14 +182,14 @@ public class Stock extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Choose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Search))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                    .addComponent(Back)
                     .addComponent(gotoAdd)
                     .addComponent(gotoUp))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -212,13 +213,39 @@ public class Stock extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         controller.goToHome();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_BackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        q.SelectProduct(jComboBox1.getSelectedItem().toString(), jTextField1.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        String ch = Choose.getSelectedItem().toString();
+        String temp = null;
+        if(ch.equals("รหัสสินค้า")){
+            temp = "product_id";
+        }else if(ch.equals("ประเภทสินค้า")) {
+            temp = "product_type";    
+        }else if(ch.equals("ชื่อสินค้า")) {
+            temp = "product_name";    
+        }else if(ch.equals("สี")) {
+            temp = "product_color";
+        }
+        DefaultTableModel model = (DefaultTableModel) stockTable.getModel();
+        model.setRowCount(0); //Set new value
+        ArrayList<String> s = q.searchProduct(temp, searchTxt.getText());
+        for(int i=0;i < s.size();i+=7) {
+            model.addRow(new Object[]
+            {
+                s.get(i),
+                s.get(i+1),
+                s.get(i+2),
+                s.get(i+3),
+                s.get(i+4),
+                s.get(i+5),
+                s.get(i+6)
+            });
+        }
+        
+    }//GEN-LAST:event_SearchActionPerformed
 
     private void gotoUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoUpActionPerformed
         int row = stockTable.getSelectedRow();
@@ -254,16 +281,16 @@ public class Stock extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
+    private javax.swing.JComboBox Choose;
+    private javax.swing.JButton Search;
     private javax.swing.JButton gotoAdd;
     private javax.swing.JButton gotoUp;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField searchTxt;
     private javax.swing.JTable stockTable;
     // End of variables declaration//GEN-END:variables
 }

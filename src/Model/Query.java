@@ -29,11 +29,21 @@ public class Query extends Database{
     
     // end of add customer page
     
-    public void SelectProduct(String t, String s){
-        try {
-            String query = "select * from Product where " + t + " = " + s;
-            db.executeQuery(query);
-        } catch(Exception ex) { }
+    public ArrayList<String> searchProduct(String t, String s){   
+        ArrayList<String> myArrList = new ArrayList<String>();
+        String query = "SELECT * FROM `stock` WHERE `"+t+"` LIKE '"+s+"%'";
+        ArrayList<HashMap> list = db.queryRows(query);
+            for(HashMap l : list) 
+            {
+                myArrList.add(""+l.get("product_id"));
+                myArrList.add(""+l.get("product_type"));
+                myArrList.add(""+l.get("product_name"));
+                myArrList.add(""+l.get("product_color")); 
+                myArrList.add(""+l.get("product_cost"));
+                myArrList.add(""+l.get("product_unit"));
+                myArrList.add(""+l.get("product_amount"));
+            }
+        return myArrList;
     }  
     
     public void addStock(String i, String t, String n, String c, String cos, String u, String amo) {

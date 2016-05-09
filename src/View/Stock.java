@@ -113,6 +113,11 @@ public class Stock extends javax.swing.JPanel {
         }
 
         searchTxt.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        searchTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchTxtKeyReleased(evt);
+            }
+        });
 
         Choose.setBackground(new java.awt.Color(240, 240, 240));
         Choose.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
@@ -272,12 +277,41 @@ public class Stock extends javax.swing.JPanel {
                 product.getType(),
                 product.getName(),
                 product.getColor(),
-                product.getPrice(),
+                product.getPrice() + " บาท",
                 product.getUnit(),
                 product.getAmount()
             });
         }
     }//GEN-LAST:event_stockTableAncestorAdded
+
+    private void searchTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTxtKeyReleased
+        String ch = Choose.getSelectedItem().toString();
+        String temp = null;
+        if(ch.equals("รหัสสินค้า")){
+            temp = "product_id";
+        }else if(ch.equals("ประเภทสินค้า")) {
+            temp = "product_type";    
+        }else if(ch.equals("ชื่อสินค้า")) {
+            temp = "product_name";    
+        }else if(ch.equals("สี")) {
+            temp = "product_color";
+        }
+        DefaultTableModel model = (DefaultTableModel) stockTable.getModel();
+        model.setRowCount(0); //Set new value
+        ArrayList<String> s = q.searchProduct(temp, searchTxt.getText());
+        for(int i=0;i < s.size();i+=7) {
+            model.addRow(new Object[]
+            {
+                s.get(i),
+                s.get(i+1),
+                s.get(i+2),
+                s.get(i+3),
+                s.get(i+4),
+                s.get(i+5),
+                s.get(i+6)
+            });
+        }
+    }//GEN-LAST:event_searchTxtKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

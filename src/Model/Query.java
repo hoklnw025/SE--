@@ -31,7 +31,7 @@ public class Query extends Database{
     
     public ArrayList<String> searchProduct(String t, String s){   
         ArrayList<String> myArrList = new ArrayList<String>();
-        String query = "SELECT * FROM `stock` WHERE `"+t+"` LIKE '"+s+"%'";
+        String query = "SELECT * FROM `stock` WHERE `"+t+"` LIKE '%"+s+"%'";
         ArrayList<HashMap> list = db.queryRows(query);
             for(HashMap l : list) 
             {

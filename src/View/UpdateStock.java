@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class UpdateStock extends javax.swing.JPanel {
 
     Controller controller;
-    Query q;
+    Query q = new Query();
     public UpdateStock(Controller controller, EditProduct edit) {
         this.controller = controller;
         setBounds(0, 0, 800, 600);
@@ -318,30 +318,20 @@ public class UpdateStock extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String i = null;
+        String i = newID.getText();
         String t = newType.getSelectedItem().toString();
         String n = newName.getText();
         String p = newPrice.getText();
-        String a = newUnit.getText();
+        String u = newUnit.getText();
         String c = newColor.getText();
-        String u = newAmount.getText();
-
-        String iOld = oldID.getText();
-        String tOld = oldType.getText();
-        String nOld = oldName.getText();
-        String pOld = oldPrice.getText();
-        String aOld = oldUnit.getText();
-        String cOld = oldColor.getText();
-        String uOld = oldAmount.getText();
-
-        String sql = q.stockOld(iOld, tOld, nOld, pOld, aOld, cOld, uOld);
+        String a = newAmount.getText();
 
         if(n.length() == 0 || c.length() == 0 || p.length() == 0 || u.length() == 0 || a.length() == 0) {
             JOptionPane.showMessageDialog(null,"กรุรากรอกข้อมูลด้วยครับ/ค่ะ!");
         } else if(t.length() <= 50) {
             if(c.length() <= 50) {
                 if(u.length() <= 50) {    
-                        q.updateStockNew(sql, i, t, n, p, a, c, u);
+                        q.updateStockNew(i, t, n, c, p, u, a);
                         JOptionPane.showMessageDialog(null,"เรียบร้อยแล้วครับ/ค่ะ!");
                         controller.goToStock();
                 } else {

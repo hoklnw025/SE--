@@ -36,27 +36,32 @@ public class Query extends Database{
         } catch(Exception ex) { }
     }  
     
-    public void addStock(String i, String t, String n, String c, String co, String u, String amo) {
+    public void addStock(String i, String t, String n, String c, String cos, String u, String amo) {
         try {
-            String query = "INSERT INTO `stock`(`product_id`, `product_type`, `product_name`, `product_color`, `product_cost`, `product_unit`, `product_amount`) "
-                    + "VALUES ('"+i+"','"+t+"','"+n+"','"+c+"','"+co+"','"+u+"','"+amo+"')";
+            String query = "INSERT INTO `stock`(`product_id`, "
+                    + "`product_type`, "
+                    + "`product_name`, "
+                    + "`product_color`, "
+                    + "`product_cost`, "
+                    + "`product_unit`, "
+                    + "`product_amount`) "
+                    + "VALUES ('"+i+"','"+t+"','"+n+"','"+c+"','"+cos+"','"+u+"','"+amo+"')";
             db.executeQuery(query);
         }catch(Exception e){ }        
     }
     
-    public void updateStockNew(String old, String i, String t, String n, String c, String co, String u, String amo) {
+    public void updateStockNew(String i, String t, String n, String c, String cos, String u, String amo) {
          try {
-             String query = "UPDATE 'stock' SET " + "'product_id' = '" + i + "' ,'product_type' = '" + t + "' ,'product_name = '" + n
-                     + "' ,`product_color` = '" + c + "' ,`product_cost` = '" + co + "' ,`product_unit` = '" + u +"' ,`product_amount` = '" + amo + "'"
-                     + " WHERE " + old; 
+             String query = "UPDATE `stock` SET "
+                     + "`product_type`='"+t+"',"
+                     + "`product_name`='"+n+"',"
+                     + "`product_color`='"+c+"',"
+                     + "`product_cost`='"+cos+"',"
+                     + "`product_unit`='"+u+"',"
+                     + "`product_amount`='"+amo+"' "
+                     + "WHERE `product_id`= '"+i+"'"; 
             db.executeQuery(query);
          } catch(Exception e) {  }
-    }
-    
-    public String stockOld(String i, String t, String n, String c, String co, String u, String amo){
-        String old = "'product_id' = '" + i + "' ,'product_type' = '" + t + "' ,'product_name = '" + n
-                     +"' ,`product_color` = '" + c + "' ,`product_cost` = '" + co + "' ,`product_unit` = '" + u +"' ,`product_amount` = '" + amo + "'";
-        return old;
     }
     
     public Product StockDB(int i){
@@ -66,7 +71,13 @@ public class Query extends Database{
             for(HashMap l : list) 
             {
                 if(l.get("product_id").equals(i+"")){
-                    product = new Product(""+l.get("product_id"), ""+l.get("product_type"), ""+l.get("product_name"), ""+l.get("product_color"), ""+l.get("product_cost"), ""+l.get("product_unit"), ""+l.get("product_amount"));
+                    product = new Product(""+l.get("product_id"), 
+                            ""+l.get("product_type"), 
+                            ""+l.get("product_name"), 
+                            ""+l.get("product_color"), 
+                            ""+l.get("product_cost"), 
+                            ""+l.get("product_unit"), 
+                            ""+l.get("product_amount"));
                     break;
                 }
             }

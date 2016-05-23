@@ -244,7 +244,7 @@ public class Stock extends javax.swing.JPanel {
                 s.get(i+1),
                 s.get(i+2),
                 s.get(i+3),
-                s.get(i+4),
+                s.get(i+4) + " บาท",
                 s.get(i+5),
                 s.get(i+6)
             });
@@ -273,7 +273,8 @@ public class Stock extends javax.swing.JPanel {
         int i;
         for(i=1;i<=count;i++) {
             product = q.StockDB(i);
-            model.addRow(new Object[]{product.getID(),
+            model.addRow(new Object[]{
+                product.getID(),
                 product.getType(),
                 product.getName(),
                 product.getColor(),
@@ -306,7 +307,7 @@ public class Stock extends javax.swing.JPanel {
                 s.get(i+1),
                 s.get(i+2),
                 s.get(i+3),
-                s.get(i+4),
+                s.get(i+4) + " บาท",
                 s.get(i+5),
                 s.get(i+6)
             });

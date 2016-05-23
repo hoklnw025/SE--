@@ -40,6 +40,9 @@ public class Controller {
         UpdateStock panel = new UpdateStock(this, edit);
         frame.changeCurrent(panel);
     }
+    public void goToSerachCustomer() {
+        frame.changeCurrent(new SearchCustomer(this));
+    }
     
     public void Quit() {
         frame.dispose();

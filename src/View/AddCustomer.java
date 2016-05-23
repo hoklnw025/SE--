@@ -41,7 +41,7 @@ public class AddCustomer extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextArea();
         btnConfirm = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        chooseSex = new javax.swing.JComboBox<String>();
+        chooseSex = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -101,7 +101,7 @@ public class AddCustomer extends javax.swing.JPanel {
         });
 
         chooseSex.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        chooseSex.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ชาย", "หญิง" }));
+        chooseSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ชาย", "หญิง" }));
 
         javax.swing.GroupLayout emptyPanelLayout = new javax.swing.GroupLayout(emptyPanel);
         emptyPanel.setLayout(emptyPanelLayout);
@@ -127,13 +127,12 @@ public class AddCustomer extends javax.swing.JPanel {
                         .addComponent(SocialNo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                         .addComponent(Lname, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(Fname, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtTelephoneNo, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(scrollPaneForTxtAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
-                    .addComponent(chooseSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(277, Short.MAX_VALUE))
+                    .addComponent(txtTelephoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chooseSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrollPaneForTxtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(247, Short.MAX_VALUE))
             .addGroup(emptyPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(24, 24, 24)
                 .addComponent(btnCancel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConfirm)
@@ -165,12 +164,14 @@ public class AddCustomer extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAddress)
-                    .addComponent(scrollPaneForTxtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnConfirm)
-                    .addComponent(btnCancel))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(scrollPaneForTxtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(70, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, emptyPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(emptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancel)
+                    .addComponent(btnConfirm))
+                .addContainerGap())
         );
 
         chooseSex.getAccessibleContext().setAccessibleName("chooseSex");

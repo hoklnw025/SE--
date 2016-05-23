@@ -41,6 +41,7 @@ public class Home extends javax.swing.JPanel {
         Stock = new javax.swing.JButton();
         AddCustom = new javax.swing.JButton();
         Quit = new javax.swing.JButton();
+        SearchCustom = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 204));
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -105,14 +106,25 @@ public class Home extends javax.swing.JPanel {
             }
         });
 
+        SearchCustom.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        SearchCustom.setText("ค้นหาลูกค้า");
+        SearchCustom.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SearchCustom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        SearchCustom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchCustomActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(267, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SearchCustom, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Stock, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AddCustom, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,15 +134,17 @@ public class Home extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(26, 26, 26)
                 .addComponent(Order)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(AddCustom)
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
+                .addComponent(SearchCustom)
+                .addGap(26, 26, 26)
                 .addComponent(Stock)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(Quit)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -169,11 +183,16 @@ public class Home extends javax.swing.JPanel {
         controller.Quit();
     }//GEN-LAST:event_QuitActionPerformed
 
+    private void SearchCustomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchCustomActionPerformed
+        controller.goToSerachCustomer();
+    }//GEN-LAST:event_SearchCustomActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddCustom;
     private javax.swing.JButton Order;
     private javax.swing.JButton Quit;
+    private javax.swing.JButton SearchCustom;
     private javax.swing.JButton Stock;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;

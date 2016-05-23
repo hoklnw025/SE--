@@ -6,7 +6,6 @@
 package View;
 
 import Controller.Controller;
-import Model.Product;
 import Model.Query;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -89,13 +88,14 @@ public class Stock extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        stockTable.setRowHeight(20);
         stockTable.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 stockTableAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane2.setViewportView(stockTable);
@@ -268,19 +268,17 @@ public class Stock extends javax.swing.JPanel {
 
     private void stockTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_stockTableAncestorAdded
         DefaultTableModel model = (DefaultTableModel) stockTable.getModel();
-        int count = q.CountStock();
-        Product product;
-        int i;
-        for(i=1;i<=count;i++) {
-            product = q.StockDB(i);
-            model.addRow(new Object[]{
-                product.getID(),
-                product.getType(),
-                product.getName(),
-                product.getColor(),
-                product.getPrice() + " บาท",
-                product.getUnit(),
-                product.getAmount()
+        ArrayList<String> s = q.Products();
+        for(int i=0;i < s.size();i+=7) {
+            model.addRow(new Object[]
+            {
+                s.get(i),
+                s.get(i+1),
+                s.get(i+2),
+                s.get(i+3),
+                s.get(i+4) + " บาท",
+                s.get(i+5),
+                s.get(i+6)
             });
         }
     }//GEN-LAST:event_stockTableAncestorAdded

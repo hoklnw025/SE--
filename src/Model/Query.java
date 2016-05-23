@@ -13,10 +13,7 @@ import java.util.HashMap;
  */
 public class Query extends Database{
 
-    public Query() {
-        super();
-    }
-    
+ 
     //for add Customer page
     public void InsertCustomer(String id, String fn, String ln, String sex, String tel, String add){
         try {
@@ -26,8 +23,24 @@ public class Query extends Database{
             db.executeQuery(query);
         } catch(Exception ex) { }
     }
-    
     // end of add customer page
+    
+    public ArrayList<String> Products(){   
+        ArrayList<String> myArrList = new ArrayList<String>();
+        String query = "SELECT * FROM `stock` ";
+        ArrayList<HashMap> list = db.queryRows(query);
+            for(HashMap l : list) 
+            {
+                myArrList.add(""+l.get("product_id"));
+                myArrList.add(""+l.get("product_type"));
+                myArrList.add(""+l.get("product_name"));
+                myArrList.add(""+l.get("product_color")); 
+                myArrList.add(""+l.get("product_cost"));
+                myArrList.add(""+l.get("product_unit"));
+                myArrList.add(""+l.get("product_amount"));
+            }
+        return myArrList;
+    }
     
     public ArrayList<String> searchProduct(String t, String s){   
         ArrayList<String> myArrList = new ArrayList<String>();
@@ -45,6 +58,52 @@ public class Query extends Database{
             }
         return myArrList;
     }  
+    
+    public ArrayList<String> Customers(){   
+        ArrayList<String> myArrList = new ArrayList<String>();
+        String query = "SELECT * FROM `customer` ";
+        ArrayList<HashMap> list = db.queryRows(query);
+            for(HashMap l : list) 
+            {
+                myArrList.add(""+l.get("card_id"));
+                myArrList.add(""+l.get("first_name"));
+                myArrList.add(""+l.get("last_name"));
+                myArrList.add(""+l.get("gender")); 
+                myArrList.add(""+l.get("tel"));
+                myArrList.add(""+l.get("address"));
+            }
+        return myArrList;
+    }
+    
+    public ArrayList<String> searchCustom(String t, String s){   
+        ArrayList<String> myArrList = new ArrayList<String>();
+        String query = "SELECT * FROM `customer` WHERE `"+t+"` LIKE '%"+s+"%'";
+        ArrayList<HashMap> list = db.queryRows(query);
+            for(HashMap l : list) 
+            {
+                myArrList.add(""+l.get("card_id"));
+                myArrList.add(""+l.get("first_name"));
+                myArrList.add(""+l.get("last_name"));
+                myArrList.add(""+l.get("gender")); 
+                myArrList.add(""+l.get("tel"));
+                myArrList.add(""+l.get("address"));
+            }
+        return myArrList;
+    }
+    
+    public ArrayList<String> searchForAddress(String fs, String ls){   
+        ArrayList<String> myArrList = new ArrayList<String>();
+        String query = "SELECT * FROM `customer` WHERE `first_name` LIKE '%"+fs+"%' "
+                + "AND"
+                + "`last_name` LIKE '%"+ls+"%'";
+        ArrayList<HashMap> list = db.queryRows(query);
+            for(HashMap l : list) 
+            {
+                myArrList.add(""+l.get("address"));
+                break;
+            }
+        return myArrList;
+    }
     
     public void addStock(String i, String t, String n, String c, String cos, String u, String amo) {
         try {
@@ -74,30 +133,6 @@ public class Query extends Database{
          } catch(Exception e) {  }
     }
     
-    public Product StockDB(int i){
-            Product product = null;
-            String query = "SELECT * FROM `stock` ";
-            ArrayList<HashMap> list = db.queryRows(query);
-            for(HashMap l : list) 
-            {
-                if(l.get("product_id").equals(i+"")){
-                    product = new Product(""+l.get("product_id"), 
-                            ""+l.get("product_type"), 
-                            ""+l.get("product_name"), 
-                            ""+l.get("product_color"), 
-                            ""+l.get("product_cost"), 
-                            ""+l.get("product_unit"), 
-                            ""+l.get("product_amount"));
-                    break;
-                }
-            }
-            return product;
-    }
-    public int CountStock(){
-            int i = 0;
-            String query = "SELECT * FROM `stock` ";
-            ArrayList<HashMap> list = db.queryRows(query);
-            i = list.stream().map((_item) -> 1).reduce(i, Integer::sum);
-            return i;
-    }
+    
+    
 }

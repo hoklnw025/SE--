@@ -5,16 +5,22 @@
  */
 package View;
 
+import Controller.Controller;
+import Model.Query;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author USER
  */
 public class SelectStock extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SelectStock
-     */
-    public SelectStock() {
+    Controller controller;
+    Query q = new Query();
+    public SelectStock(Controller controller) {
+        this.controller = controller;
+        setBounds(0, 0, 800, 600);
         initComponents();
     }
 
@@ -31,18 +37,18 @@ public class SelectStock extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        searchTxt = new javax.swing.JTextField();
+        searchBt = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        listTable = new javax.swing.JTable();
+        back = new javax.swing.JButton();
+        addList = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 153, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("DokChampa", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("เลือกสินค้า");
 
@@ -62,61 +68,99 @@ public class SelectStock extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("ระบุสินค้า");
+        jLabel2.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        jLabel2.setText("ระบุชื่อสินค้า");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("ค้นหา");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "รหัสสินค้า", "ชื่อสินค้า", "สี", "ราคา", "จำนวน", "ระบุ"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+        searchTxt.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        searchTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchTxtKeyReleased(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("ย้อนกลับ");
+        searchBt.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        searchBt.setText("ค้นหา");
+        searchBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setText("ถัดไป");
+        listTable.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        listTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "รหัสสินค้า", "ประเภทสินค้า", "ชื่อสินค้า", "สี", "ราคา", "หน่วย", "จำนวนคงเหลือ"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        listTable.setRowHeight(20);
+        listTable.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                listTableAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(listTable);
+        if (listTable.getColumnModel().getColumnCount() > 0) {
+            listTable.getColumnModel().getColumn(0).setResizable(false);
+            listTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+            listTable.getColumnModel().getColumn(1).setResizable(false);
+            listTable.getColumnModel().getColumn(2).setResizable(false);
+            listTable.getColumnModel().getColumn(3).setResizable(false);
+            listTable.getColumnModel().getColumn(4).setResizable(false);
+            listTable.getColumnModel().getColumn(5).setResizable(false);
+            listTable.getColumnModel().getColumn(5).setPreferredWidth(20);
+            listTable.getColumnModel().getColumn(6).setResizable(false);
+            listTable.getColumnModel().getColumn(6).setPreferredWidth(20);
+        }
+
+        back.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        back.setText("<<ย้อนกลับ");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
+        addList.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        addList.setText("เพิ่ม");
+        addList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addListActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(jButton1)
-                        .addGap(0, 275, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(searchTxt)
+                        .addGap(18, 18, 18)
+                        .addComponent(searchBt))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(back)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addList, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -125,14 +169,14 @@ public class SelectStock extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(addList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(93, 93, 93))
         );
 
@@ -146,25 +190,87 @@ public class SelectStock extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(48, 48, 48)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(41, 41, 41)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        controller.goToInvoice();
+    }//GEN-LAST:event_backActionPerformed
+
+    private void addListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListActionPerformed
+        System.out.println(listTable.getSelectedRow() + " " + listTable.getSelectedColumn());
+        //listTable.setValueAt(Boolean.FALSE, listTable.getSelectedRow(), listTable.getSelectedColumn());
+    }//GEN-LAST:event_addListActionPerformed
+
+    private void listTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listTableAncestorAdded
+        DefaultTableModel model = (DefaultTableModel) listTable.getModel();
+        ArrayList<String> s = q.Products();
+        for(int i=0;i < s.size();i+=7) {
+            model.addRow(new Object[]
+            {
+                s.get(i),
+                s.get(i+1),
+                s.get(i+2),
+                s.get(i+3),
+                s.get(i+4) + " บาท",
+                s.get(i+5),
+                s.get(i+6)
+            });
+        }
+    }//GEN-LAST:event_listTableAncestorAdded
+
+    private void searchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtActionPerformed
+        DefaultTableModel model = (DefaultTableModel) listTable.getModel();
+        model.setRowCount(0); //Set new value
+        ArrayList<String> s = q.searchProduct("product_name", searchTxt.getText());
+        for(int i=0;i < s.size();i+=7) {
+            model.addRow(new Object[]
+            {
+                s.get(i),
+                s.get(i+1),
+                s.get(i+2),
+                s.get(i+3),
+                s.get(i+4) + " บาท",
+                s.get(i+5),
+                s.get(i+6)
+            });
+        }
+    }//GEN-LAST:event_searchBtActionPerformed
+
+    private void searchTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTxtKeyReleased
+        DefaultTableModel model = (DefaultTableModel) listTable.getModel();
+        model.setRowCount(0); //Set new value
+        ArrayList<String> s = q.searchProduct("product_name", searchTxt.getText());
+        for(int i=0;i < s.size();i+=7) {
+            model.addRow(new Object[]
+            {
+                s.get(i),
+                s.get(i+1),
+                s.get(i+2),
+                s.get(i+3),
+                s.get(i+4) + " บาท",
+                s.get(i+5),
+                s.get(i+6)
+            });
+        }
+    }//GEN-LAST:event_searchTxtKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton addList;
+    private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable listTable;
+    private javax.swing.JButton searchBt;
+    private javax.swing.JTextField searchTxt;
     // End of variables declaration//GEN-END:variables
 }

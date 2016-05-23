@@ -145,7 +145,7 @@ public class AddStock extends javax.swing.JPanel {
         });
 
         type.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "กระจก", "กระจกบาง", "กระจกหนา", "อลูมิเนียม", "เหล็ก", " " }));
+        type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "กระจก", "กระจกบาง", "กระจกหนา", "อลูมิเนียม", "เหล็ก" }));
 
         jLabel9.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

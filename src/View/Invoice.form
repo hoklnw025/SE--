@@ -122,7 +122,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextField3" min="-2" pref="138" max="-2" attributes="0"/>
+                                  <Component id="totalPrice" min="-2" pref="138" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="sumTotal" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -177,7 +177,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="totalPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="sumTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -212,12 +212,13 @@
                   <Font name="2005_iannnnnGMO" size="24" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
+                  <Table columnCount="6" rowCount="0">
                     <Column editable="false" title="&#xe23;&#xe32;&#xe22;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
+                    <Column editable="false" title="&#xe2a;&#xe35;" type="java.lang.Object"/>
                     <Column editable="false" title="&#xe2b;&#xe19;&#xe48;&#xe27;&#xe22;" type="java.lang.Object"/>
-                    <Column editable="false" title="&#xe08;&#xe33;&#xe19;&#xe27;&#xe19;" type="java.lang.Object"/>
-                    <Column editable="false" title="&#xe2b;&#xe19;&#xe48;&#xe27;&#xe22;&#xe25;&#xe30;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#xe23;&#xe32;&#xe04;&#xe32;&#xe23;&#xe27;&#xe21;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#xe08;&#xe33;&#xe19;&#xe27;&#xe19;" type="java.lang.Object"/>
+                    <Column editable="false" title="&#xe23;&#xe32;&#xe04;&#xe32;&#xe15;&#xe48;&#xe2d;&#xe2b;&#xe19;&#xe48;&#xe27;&#xe22;" type="java.lang.Object"/>
+                    <Column editable="false" title="&#xe23;&#xe32;&#xe04;&#xe32;&#xe23;&#xe27;&#xe21;" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -227,22 +228,27 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="20" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="20" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -254,6 +260,10 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="listTableAncestorAdded"/>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listTableMouseReleased"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -328,7 +338,7 @@
             <Property name="text" type="java.lang.String" value="&#xe23;&#xe32;&#xe04;&#xe32;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="totalPrice">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="2005_iannnnnGMO" size="24" style="0"/>
@@ -342,6 +352,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#xe04;&#xe33;&#xe19;&#xe27;&#xe13;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sumTotalActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="printPaper">
           <Properties>

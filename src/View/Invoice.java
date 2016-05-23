@@ -23,6 +23,7 @@ public class Invoice extends javax.swing.JPanel {
         setBounds(0, 0, 800, 600);
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +47,7 @@ public class Invoice extends javax.swing.JPanel {
         addressTxt = new javax.swing.JTextArea();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        totalPrice = new javax.swing.JTextField();
         sumTotal = new javax.swing.JButton();
         printPaper = new javax.swing.JButton();
         back = new javax.swing.JButton();
@@ -89,11 +90,11 @@ public class Invoice extends javax.swing.JPanel {
 
             },
             new String [] {
-                "รายการ", "หน่วย", "จำนวน", "หน่วยละ", "ราคารวม"
+                "รายการ", "สี", "หน่วย", "จำนวน", "ราคาต่อหน่วย", "ราคารวม"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -101,13 +102,31 @@ public class Invoice extends javax.swing.JPanel {
             }
         });
         listTable.setRowHeight(20);
+        listTable.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                listTableAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        listTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                listTableMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(listTable);
         if (listTable.getColumnModel().getColumnCount() > 0) {
             listTable.getColumnModel().getColumn(0).setResizable(false);
             listTable.getColumnModel().getColumn(1).setResizable(false);
+            listTable.getColumnModel().getColumn(1).setPreferredWidth(20);
             listTable.getColumnModel().getColumn(2).setResizable(false);
-            listTable.getColumnModel().getColumn(2).setPreferredWidth(10);
+            listTable.getColumnModel().getColumn(2).setPreferredWidth(20);
             listTable.getColumnModel().getColumn(3).setResizable(false);
+            listTable.getColumnModel().getColumn(3).setPreferredWidth(30);
+            listTable.getColumnModel().getColumn(4).setResizable(false);
+            listTable.getColumnModel().getColumn(5).setResizable(false);
         }
 
         name.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
@@ -140,10 +159,15 @@ public class Invoice extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         jLabel5.setText("ราคา");
 
-        jTextField3.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        totalPrice.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
 
         sumTotal.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         sumTotal.setText("คำนวณ");
+        sumTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sumTotalActionPerformed(evt);
+            }
+        });
 
         printPaper.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         printPaper.setText("พิมพ์");
@@ -207,7 +231,7 @@ public class Invoice extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(totalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(sumTotal))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -249,7 +273,7 @@ public class Invoice extends javax.swing.JPanel {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(totalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sumTotal)
                             .addComponent(jLabel5)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,6 +306,7 @@ public class Invoice extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        List.s = new ArrayList<String>();
         controller.goToHome();
     }//GEN-LAST:event_backActionPerformed
 
@@ -332,6 +357,47 @@ public class Invoice extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_nameComboAncestorAdded
 
+    private void listTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listTableAncestorAdded
+        DefaultTableModel model = (DefaultTableModel) listTable.getModel();
+        ArrayList<String> s = List.s;
+        for(int i=0;i < s.size();i+=4) {
+            model.addRow(new Object[]
+            {
+                s.get(i),
+                s.get(i+1),
+                s.get(i+3),
+                "",
+                s.get(i+2),
+                ""
+            });
+        }
+    }//GEN-LAST:event_listTableAncestorAdded
+
+    private void listTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listTableMouseReleased
+        int row = listTable.getSelectedRow();
+        String amoStr = (String) listTable.getValueAt(row, 3);
+        double amo = 0;
+        try {
+            if(amoStr != null) {
+                amo = Double.parseDouble(amoStr);
+            }
+            double price = Double.parseDouble((String) listTable.getValueAt(row, 4));
+            double result = amo*price;
+            listTable.setValueAt(result, row, 5);
+        } catch(Exception e) {
+            
+        }
+    }//GEN-LAST:event_listTableMouseReleased
+
+    private void sumTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumTotalActionPerformed
+        int rowSize = listTable.getRowCount();
+        double sum = 0;
+        for(int i = 0;i< rowSize;i++) {
+            sum += (double)listTable.getValueAt(i, 5);
+        }
+        totalPrice.setText(""+sum);
+    }//GEN-LAST:event_sumTotalActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addList;
@@ -347,12 +413,12 @@ public class Invoice extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable listTable;
     private javax.swing.JLabel name;
     private javax.swing.JComboBox<String> nameCombo;
     private javax.swing.JButton printPaper;
     private javax.swing.JButton searchBt;
     private javax.swing.JButton sumTotal;
+    private javax.swing.JTextField totalPrice;
     // End of variables declaration//GEN-END:variables
 }

@@ -203,8 +203,15 @@ public class SelectStock extends javax.swing.JPanel {
     }//GEN-LAST:event_backActionPerformed
 
     private void addListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addListActionPerformed
-        System.out.println(listTable.getSelectedRow() + " " + listTable.getSelectedColumn());
-        //listTable.setValueAt(Boolean.FALSE, listTable.getSelectedRow(), listTable.getSelectedColumn());
+        int row = listTable.getSelectedRow();
+        int column = 7;
+        for(int i = 0 ; i<column;i++){
+            if(i == 2 ||i == 3 ||i == 4 ||i == 5) {
+              //System.out.println(listTable.getValueAt(row, i));  
+              List.s.add((String) listTable.getValueAt(row, i));
+            }
+        }
+        controller.goToInvoice(); //(String) listTable.getValueAt(row, column));
     }//GEN-LAST:event_addListActionPerformed
 
     private void listTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listTableAncestorAdded
@@ -217,7 +224,7 @@ public class SelectStock extends javax.swing.JPanel {
                 s.get(i+1),
                 s.get(i+2),
                 s.get(i+3),
-                s.get(i+4) + " บาท",
+                s.get(i+4),
                 s.get(i+5),
                 s.get(i+6)
             });
@@ -235,7 +242,7 @@ public class SelectStock extends javax.swing.JPanel {
                 s.get(i+1),
                 s.get(i+2),
                 s.get(i+3),
-                s.get(i+4) + " บาท",
+                s.get(i+4),
                 s.get(i+5),
                 s.get(i+6)
             });
@@ -253,7 +260,7 @@ public class SelectStock extends javax.swing.JPanel {
                 s.get(i+1),
                 s.get(i+2),
                 s.get(i+3),
-                s.get(i+4) + " บาท",
+                s.get(i+4),
                 s.get(i+5),
                 s.get(i+6)
             });

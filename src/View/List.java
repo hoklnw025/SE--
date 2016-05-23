@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package View;
+
+import java.util.ArrayList;
 
 /**
  *
  * @author Tuk
  */
-public class SelectList {
-    
+public class List {
+    static ArrayList<String> s = new ArrayList<String>();
 }

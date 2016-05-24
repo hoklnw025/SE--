@@ -107,7 +107,8 @@ public class Query extends Database{
     
     public void addStock(String i, String t, String n, String c, String cos, String u, String amo) {
         try {
-            String query = "INSERT INTO `stock`(`product_id`, "
+            String query = "INSERT INTO `stock`"
+                    + "(`product_id`, "
                     + "`product_type`, "
                     + "`product_name`, "
                     + "`product_color`, "
@@ -133,6 +134,49 @@ public class Query extends Database{
          } catch(Exception e) {  }
     }
     
+    public String lastestInvoid(){   
+        ArrayList<String> myArrList = new ArrayList<String>();
+        String query = "SELECT * FROM `invoice`";
+        ArrayList<HashMap> list = db.queryRows(query);
+            for(HashMap l : list) 
+            {
+                myArrList.add(""+l.get("invoice_id"));
+            }
+        //System.out.println(myArrList.size());
+        return myArrList.get(myArrList.size()-1);
+    }
     
+    public void addInvoid(String f, String l, String a, String d, String t) {
+        try {
+            String query = "INSERT INTO `invoice`(`cus_firstName`, `cus_lastName`, `cus_address`, `date`, `total_cost`) "
+                    + "VALUES "
+                    + "("
+                    + "'"+f+"',"
+                    + "'"+l+"',"
+                    + "'"+a+"',"
+                    + "'"+d+"',"
+                    + "'"+t+"'"
+                    + ")";
+            db.executeQuery(query);
+        }catch(Exception e){ }        
+    }
+    
+    public void addInvoidDetail(String id, String n, String c, String u, String amo, String perAmo, String cost) {
+        try {
+            //System.out.println(id);
+            String query = "INSERT INTO `invoice_detail`(`invoice_id`, `product_name`, `product_color`, `product_unit`, `product_amount`, `cost_perAmount`, `total_cost`) "
+                    + "VALUES "
+                    + "("
+                    + "'"+id+"',"
+                    + "'"+n+"',"
+                    + "'"+c+"',"
+                    + "'"+u+"',"
+                    + "'"+amo+"',"
+                    + "'"+perAmo+"',"
+                    + "'"+cost+"'"
+                    + ")";
+            db.executeQuery(query);
+        }catch(Exception e){ }        
+    }
     
 }

@@ -8,6 +8,7 @@ package View;
 import Controller.Controller;
 import Model.Query;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -45,11 +46,11 @@ public class Invoice extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         addressTxt = new javax.swing.JTextArea();
-        jTextField2 = new javax.swing.JTextField();
+        date = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         totalPrice = new javax.swing.JTextField();
         sumTotal = new javax.swing.JButton();
-        printPaper = new javax.swing.JButton();
+        submit = new javax.swing.JButton();
         back = new javax.swing.JButton();
         addList = new javax.swing.JButton();
         addList1 = new javax.swing.JButton();
@@ -103,12 +104,12 @@ public class Invoice extends javax.swing.JPanel {
         });
         listTable.setRowHeight(20);
         listTable.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 listTableAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         listTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -154,7 +155,7 @@ public class Invoice extends javax.swing.JPanel {
         addressTxt.setRows(5);
         jScrollPane2.setViewportView(addressTxt);
 
-        jTextField2.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        date.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         jLabel5.setText("ราคา");
@@ -169,8 +170,13 @@ public class Invoice extends javax.swing.JPanel {
             }
         });
 
-        printPaper.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
-        printPaper.setText("พิมพ์");
+        submit.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
+        submit.setText("เสร็จสิ้น");
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
 
         back.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         back.setText("<< ย้อนกลับ");
@@ -198,12 +204,12 @@ public class Invoice extends javax.swing.JPanel {
 
         nameCombo.setFont(new java.awt.Font("2005_iannnnnGMO", 0, 24)); // NOI18N
         nameCombo.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 nameComboAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
 
@@ -221,7 +227,7 @@ public class Invoice extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                            .addComponent(jTextField2)))
+                            .addComponent(date)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +254,7 @@ public class Invoice extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addList1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(printPaper))
+                        .addComponent(submit))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
@@ -269,7 +275,7 @@ public class Invoice extends javax.swing.JPanel {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -283,7 +289,7 @@ public class Invoice extends javax.swing.JPanel {
                         .addComponent(back)
                         .addComponent(addList)
                         .addComponent(addList1))
-                    .addComponent(printPaper))
+                    .addComponent(submit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -301,7 +307,7 @@ public class Invoice extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -398,12 +404,62 @@ public class Invoice extends javax.swing.JPanel {
         totalPrice.setText(""+sum);
     }//GEN-LAST:event_sumTotalActionPerformed
 
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        // TODO add your handling code here:
+        String name = nameCombo.getSelectedItem().toString();
+        String first = "";
+        String last = "";
+        for(int i=0;i<name.length();i++){
+            if(name.charAt(i)==' '){
+                break;
+            }else{ 
+                first += name.charAt(i);
+            }
+        }
+        for(int i=name.length()-1;i<name.length();i--){
+            if(name.charAt(i)==' '){
+                break;
+            }else{ 
+                last = name.charAt(i) + last;
+            }
+        }
+        
+        if(addressTxt.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"กรุณากรอกที่อยู่!");
+        }else if(date.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"กรุณวันกรอกที่ต้องการส่ง!");
+        }else if(totalPrice.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"กรุณากดปุ่ม'คำนวณ'เพื่อแสดงยอด!");
+        }else if(listTable.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"กรุณาเพิ่มสินค้า!");
+        }else{
+            
+            q.addInvoid(first, last, addressTxt.getText(), date.getText(), totalPrice.getText());
+
+            String lastInvoid = q.lastestInvoid();
+            int rowSize = listTable.getRowCount();
+            for(int i = 0, j = 0 ; i < rowSize ; i++){
+                String proName = (String)listTable.getValueAt(i, j);
+                String color = (String)listTable.getValueAt(i, j+1);
+                String unit = (String)listTable.getValueAt(i, j+2);
+                String amo = (String)listTable.getValueAt(i, j+3);
+                String perAmo = (String)listTable.getValueAt(i, j+4);
+                String cost = Double.toString((double) listTable.getValueAt(i, j+5));
+                q.addInvoidDetail(lastInvoid, proName, color, unit, amo, perAmo, cost);
+            }
+            List.s = new ArrayList<String>();
+            JOptionPane.showMessageDialog(null,"เรียบร้อยแล้วครับ/ค่ะ!");
+            controller.goToHome();
+        }
+    }//GEN-LAST:event_submitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addList;
     private javax.swing.JButton addList1;
     private javax.swing.JTextArea addressTxt;
     private javax.swing.JButton back;
+    private javax.swing.JTextField date;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -412,12 +468,11 @@ public class Invoice extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable listTable;
     private javax.swing.JLabel name;
     private javax.swing.JComboBox<String> nameCombo;
-    private javax.swing.JButton printPaper;
     private javax.swing.JButton searchBt;
+    private javax.swing.JButton submit;
     private javax.swing.JButton sumTotal;
     private javax.swing.JTextField totalPrice;
     // End of variables declaration//GEN-END:variables

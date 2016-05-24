@@ -449,7 +449,7 @@ public class Invoice extends javax.swing.JPanel {
             }
             List.s = new ArrayList<String>();
             JOptionPane.showMessageDialog(null,"เรียบร้อยแล้วครับ/ค่ะ!");
-            controller.goToHome();
+            controller.goTOInvoiceList();
         }
     }//GEN-LAST:event_submitActionPerformed
 

@@ -179,4 +179,45 @@ public class Query extends Database{
         }catch(Exception e){ }        
     }
     
+    public ArrayList<String> listInvoid(){   
+        ArrayList<String> myArrList = new ArrayList<String>();
+        String query = "SELECT * FROM `invoice` ";
+        ArrayList<HashMap> list = db.queryRows(query);
+            for(HashMap l : list) 
+            {
+                myArrList.add(""+l.get("invoice_id"));
+            }
+        return myArrList;
+    }
+    
+    public ArrayList<String> detail(String id){   
+        ArrayList<String> myArrList = new ArrayList<String>();
+        String query = "SELECT * FROM `invoice` WHERE invoice_id = '"+id+"' ";
+        ArrayList<HashMap> list = db.queryRows(query);
+            for(HashMap l : list) 
+            {
+                myArrList.add(""+l.get("cus_firstName"));
+                myArrList.add(""+l.get("cus_lastName"));
+                myArrList.add(""+l.get("cus_address"));
+                myArrList.add(""+l.get("date"));
+                myArrList.add(""+l.get("total_cost"));
+            }
+        return myArrList;
+    }
+    
+    public ArrayList<String> detailTable(String id){   
+        ArrayList<String> myArrList = new ArrayList<String>();
+        String query = "SELECT * FROM `invoice_detail` WHERE invoice_id = '"+id+"' ";
+        ArrayList<HashMap> list = db.queryRows(query);
+            for(HashMap l : list) 
+            {
+                myArrList.add(""+l.get("product_name"));
+                myArrList.add(""+l.get("product_color"));
+                myArrList.add(""+l.get("product_unit"));
+                myArrList.add(""+l.get("product_amount"));
+                myArrList.add(""+l.get("cost_perAmount"));
+                myArrList.add(""+l.get("total_cost"));
+            }
+        return myArrList;
+    }
 }

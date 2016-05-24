@@ -2,6 +2,7 @@ package Controller;
 
 import Model.EditProduct;
 import View.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class Controller {
@@ -47,6 +48,14 @@ public class Controller {
     
     public void goTOSelect(){
         frame.changeCurrent(new SelectStock(this));
+    }
+    
+    public void goTOInvoiceList(){
+        frame.changeCurrent(new InvoiceList(this));
+    }
+    
+    public void goTOInvoiceDetail(ArrayList<String> arr1,ArrayList<String> arr2){
+        frame.changeCurrent(new InvoiceDetail(this, arr1, arr2));
     }
     
     public void Quit() {
